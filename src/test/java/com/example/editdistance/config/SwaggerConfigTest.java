@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootTest
 public class SwaggerConfigTest {
 
+  // Test to verify that the SwaggerConfig bean is loaded correctly
   @Test
   public void testSwaggerConfigBean() {
     AnnotationConfigApplicationContext context =

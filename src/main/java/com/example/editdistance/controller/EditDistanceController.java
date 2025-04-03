@@ -3,6 +3,8 @@ package com.example.editdistance.controller;
 import com.example.editdistance.dto.EditDistanceResult;
 import com.example.editdistance.service.EditDistanceService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
  * the edit distance between two words.
  */
 @RestController
-@RequestMapping("/edit-distance")
+@RequestMapping("/editdistance")
 public class EditDistanceController {
+
+  /** Logger for logging messages. */
+  private static final Logger logger = LoggerFactory.getLogger(EditDistanceController.class);
 
   /** Service for calculating the edit distance between two strings. */
   private final EditDistanceService editDistanceService;
@@ -20,7 +25,7 @@ public class EditDistanceController {
   /**
    * Constructs an instance of EditDistanceController with the specified EditDistanceService.
    *
-   * @param editDistanceService the service used to calculate edit distances
+   * @param editDistanceService the service used to calculate edit distance
    */
   public EditDistanceController(EditDistanceService editDistanceService) {
     this.editDistanceService = editDistanceService;
@@ -36,7 +41,9 @@ public class EditDistanceController {
   @GetMapping
   public ResponseEntity<?> getEditDistance(
       @Valid @RequestParam String word1, @Valid @RequestParam String word2) {
+    logger.info("Received request to calculate edit distance between '{}' and '{}'", word1, word2);
     int distance = editDistanceService.findEditDistance(word1, word2);
+    logger.info("Calculated edit distance: {}", distance);
     return ResponseEntity.ok(new EditDistanceResult(distance));
   }
 }

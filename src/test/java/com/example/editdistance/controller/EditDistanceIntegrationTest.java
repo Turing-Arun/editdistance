@@ -16,37 +16,52 @@ public class EditDistanceIntegrationTest {
 
   @Test
   public void testCalculatEeditDistance() {
-    String url = "/edit-distance?word1=kitten&word2=sitting";
+    String url = "/editdistance?word1=kitten&word2=sitting";
 
+    // Send a GET request to the endpoint
     ResponseEntity<EditDistanceResult> response =
         restTemplate.getForEntity(url, EditDistanceResult.class);
+
+    // Verify the response status code should be 200 and distance should be 3
     assertThat(response.getStatusCode().value()).isEqualTo(200);
     assertThat(response.getBody().getDistance()).isEqualTo(3);
   }
 
   @Test
-  public void testCalculatEeditDistanceEmptyStrings() {
-    String url = "/edit-distance?word1=\"\"&word2=\"\"";
+  public void testCalculateEditDistanceEmptyStrings() {
+    String url = "/editdistance?word1=\"\"&word2=\"\"";
+
+    // Send a GET request to the endpoint
     ResponseEntity<EditDistanceResult> response =
         restTemplate.getForEntity(url, EditDistanceResult.class);
+
+    // Verify the response status code should be 200 and distance should be 0
     assertThat((response.getStatusCode()).value()).isEqualTo(200);
     assertThat(response.getBody().getDistance()).isEqualTo(0);
   }
 
   @Test
   public void testCalculateEditDistanceSameStrings() {
-    String url = "/edit-distance?word1=kitten&word2=kitten";
+    String url = "/editdistance?word1=kitten&word2=kitten";
+
+    // Send a GET request to the endpoint
     ResponseEntity<EditDistanceResult> response =
         restTemplate.getForEntity(url, EditDistanceResult.class);
+
+    // Verify the response status code should be 200 and distance should be 0
     assertThat((response.getStatusCode()).value()).isEqualTo(200);
     assertThat(response.getBody().getDistance()).isEqualTo(0);
   }
 
   @Test
   public void testCalculateEditDistanceOneEdit() {
-    String url = "/edit-distance?word1=kitten&word2=Pkitten";
+    String url = "/editdistance?word1=kitten&word2=Pkitten";
+
+    // Send a GET request to the endpoint
     ResponseEntity<EditDistanceResult> response =
         restTemplate.getForEntity(url, EditDistanceResult.class);
+
+    // Verify the response status code should be 200 and distance should be 1
     assertThat((response.getStatusCode()).value()).isEqualTo(200);
     assertThat(response.getBody().getDistance()).isEqualTo(1);
   }
