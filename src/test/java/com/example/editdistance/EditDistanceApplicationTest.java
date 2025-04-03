@@ -8,13 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class EditDistanceApplicationTest {
 
-	@Test
-	void contextLoads() {
-	}
+  @Test
+  void contextLoads() {}
 
-	@Test
-	void testMainClass() {
-		EditDistanceApplication.main(new String[] {});
-		assertTrue(true);
-;	}
+  @Test
+  void testMainClass() {
+    EditDistanceApplication.main(new String[] {});
+    assertTrue(true);
+    ;
+  }
 }

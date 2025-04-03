@@ -1,9 +1,9 @@
 package com.example.editdistance.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
+import org.junit.jupiter.api.Test;
 
 public class EditDistanceResultTest {
 

@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Represents the result of an edit distance calculation.
- * Contains the calculated edit distance between two strings.
+ * Represents the result of an edit distance calculation. Contains the calculated edit distance
+ * between two strings.
  */
 @Data
 @AllArgsConstructor
@@ -16,8 +16,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EditDistanceResult {
-  /**
-   * The edit distance between two strings.
-   */
+  /** The edit distance between two strings. */
   private int distance;
 }
